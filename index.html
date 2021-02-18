@@ -2,13 +2,23 @@
 <html lang="ja">
 <div id="txt"></div>
 <button onclick="requestPermission()">iOS13以上の人はここを押してください</button>
+<input type="range" min="0.1" max="10" id="limen">
 <script>
+var limen = 0.1;
+var count = 0;
+document.getElementById("limen").addEventListener("input",updateLimen);
+function updateLimen(e){limen = e.target.value;}
 requestPermission = ()=> {
   DeviceMotionEvent.requestPermission().then(response => {
     if (response === 'granted') {
       window.addEventListener("devicemotion", (dat) => {
         let txt = document.getElementById("txt")
-        txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
+        // txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
+        {x, y, z}=dat.acceleration;
+        if(Math.abs(x) + Math.abs(y) + Math.abs(z) > t){
+          count++;
+          txt.innerHTML = `${count}回振りました`;
+        };
       });
     }
   }).catch(console.error);
