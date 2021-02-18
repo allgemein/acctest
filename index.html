@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <div id="txt"></div>
+<div id="liq"></div>
 <button onclick="requestPermission()">iOS13以上の人はここを押してください</button>
-<input type="range" min="1" max="100" id="limen">
+<!-- <input type="range" min="1" max="100" id="limen"> -->
+<style>
+#liq {
+  width: 100vw;
+  height: 0px;
+  color: orange;
+}
 <script>
-var limen = 0.1;
+var limen = 8;
 var count = 0;
 document.getElementById("limen").addEventListener("input",updateLimen);
 function updateLimen(e){limen = e.target.value;}
@@ -17,7 +24,8 @@ requestPermission = ()=> {
         var {x, y, z}=dat.acceleration;
         if(Math.abs(x) + Math.abs(y) + Math.abs(z) > limen){
           count++;
-          txt.innerHTML = `${count}回振りました`;
+          document.getElementById("liq").style.height = count+"px";
+          // txt.innerHTML = `${count}回振りました`;
         };
       });
     }
