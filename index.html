@@ -26,7 +26,7 @@ requestPermission = ()=> {
         // txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
         var {x, y, z}=dat.acceleration;
         if(Math.abs(x) + Math.abs(y) + Math.abs(z) > limen){
-          count++;
+          count+=5;
           document.getElementById("liq").style.height = count+"px";
           // txt.innerHTML = `${count}回振りました`;
         }
