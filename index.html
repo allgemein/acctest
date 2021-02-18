@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<div id="txt"></div>
+<button onclick="requestPermission()">iOS13以上の人はここを押してください</button>
+<script>
+requestPermission = ()=> {
+  DeviceMotionEvent.requestPermission().then(response => {
+    if (response === 'granted') {
+      window.addEventListener("devicemotion", (dat) => {
+        let txt = document.getElementById("txt")
+        txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
+      });
+    }
+  }).catch(console.error);
+};
+
+</script>
