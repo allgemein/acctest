@@ -22,7 +22,7 @@ requestPermission = ()=> {
   DeviceMotionEvent.requestPermission().then(response => {
     if (response === 'granted') {
       window.addEventListener("devicemotion", (dat) => {
-        let txt = document.getElementById("txt")
+        let txt = document.getElementById("txt");
         // txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
         var {x, y, z}=dat.acceleration;
         if(Math.abs(x) + Math.abs(y) + Math.abs(z) > limen){
