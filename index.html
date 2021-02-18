@@ -2,7 +2,7 @@
 <html lang="ja">
   <div id="txt"></div>
   <div id="liq"></div>
-  <button onclick="requestPermission()">iOS13以上の人はここを押してください</button>
+  <button id="per" onclick="requestPermission()">iOS13以上の人はここを押してください</button>
   <!-- <input type="range" min="1" max="100" id="limen"> -->
   <style>
 #liq {
@@ -12,21 +12,26 @@
   height: 0px;
   background-color: orange;
 }
+#per {
+  width: 50vw;
+  height: 10vw;
+}
   </style>
   <script>
-    var limen = 5;
+    var limen = 4;
 var count = 0;
 // document.getElementById("limen").addEventListener("input",updateLimen);
 // function updateLimen(e){limen = e.target.value;}
 requestPermission = ()=> {
   DeviceMotionEvent.requestPermission().then(response => {
     if (response === 'granted') {
+      document.getElementById("per").css.display="none";
       window.addEventListener("devicemotion", (dat) => {
         let txt = document.getElementById("txt");
         // txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
         var {x, y, z}=dat.acceleration;
         if(Math.abs(x) + Math.abs(y) + Math.abs(z) > limen){
-          count+=5;
+          count+=2;
           document.getElementById("liq").style.height = count+"px";
           // txt.innerHTML = `${count}回振りました`;
         }
@@ -35,11 +40,11 @@ requestPermission = ()=> {
   }).catch(console.error);
 };
 
-setInterval(decCount, 100);
+setInterval(decCount, 50);
 
 function decCount(){
-  if(count>10){
-    count-=10;
+  if(count>5){
+    count-=5;
     document.getElementById("liq").style.height = count+"px";
   }
 }
