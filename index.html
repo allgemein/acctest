@@ -38,8 +38,8 @@ requestPermission = ()=> {
 setInterval(decCount, 100);
 
 function decCount(){
-  if(count>0){
-    count--;
+  if(count>10){
+    count-=10;
     document.getElementById("liq").style.height = count+"px";
   }
 }
