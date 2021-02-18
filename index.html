@@ -25,7 +25,7 @@ var count = 0;
 requestPermission = ()=> {
   DeviceMotionEvent.requestPermission().then(response => {
     if (response === 'granted') {
-      document.getElementById("per").css.display="none";
+      // document.getElementById("per").css.display="none";
       window.addEventListener("devicemotion", (dat) => {
         let txt = document.getElementById("txt");
         // txt.innerHTML = `x:${dat.acceleration.x} y:${dat.acceleration.y} z:${dat.acceleration.z}`;
