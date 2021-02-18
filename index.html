@@ -12,9 +12,9 @@
   height: 0px;
   background-color: orange;
 }
-</style>
-<script>
-var limen = 5;
+  </style>
+  <script>
+    var limen = 5;
 var count = 0;
 // document.getElementById("limen").addEventListener("input",updateLimen);
 // function updateLimen(e){limen = e.target.value;}
@@ -34,4 +34,13 @@ requestPermission = ()=> {
     }
   }).catch(console.error);
 };
+
+setInterval(decCount, 250);
+
+function decCount(){
+  if(count>0){
+    count--;
+    document.getElementById("liq").style.height = count+"px";
+  }
+}
 </script>
