@@ -10,11 +10,12 @@
   height: 0px;
   color: orange;
 }
+</style>
 <script>
 var limen = 8;
 var count = 0;
-document.getElementById("limen").addEventListener("input",updateLimen);
-function updateLimen(e){limen = e.target.value;}
+// document.getElementById("limen").addEventListener("input",updateLimen);
+// function updateLimen(e){limen = e.target.value;}
 requestPermission = ()=> {
   DeviceMotionEvent.requestPermission().then(response => {
     if (response === 'granted') {
